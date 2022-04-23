@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Add Person Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="personForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Surname</mat-label>
+      <input formControlName="surname" matInput placeholder="Surname">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input formControlName="age" matInput placeholder="Age">
+    </mat-form-field>
+    <div mat-dialog-actions [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button style="margin-left: 8px" mat-raised-button color="primary" (click)="addPerson()">{{actionBtn}}</button>
+    </div>
+  </form>
+</div>
