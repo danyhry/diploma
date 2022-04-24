@@ -5,4 +5,5 @@ jdk:
   - oraclejdk11
 language: java
 before_install:
+  - chmod +x build.sh
   - "mvn clean install"
