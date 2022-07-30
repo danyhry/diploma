@@ -1,16 +1,16 @@
 package com.danyhry.dao;
 
-import com.danyhry.model.Person;
+import com.danyhry.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PersonRowMapper implements RowMapper<Person> {
+public class UserRowMapper implements RowMapper<User> {
 
     @Override
-    public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Person(
+    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return new User(
                 rs.getLong("id"),
                 rs.getString("name"),
                 rs.getString("surname"),

@@ -1,6 +1,6 @@
 package com.danyhry.dao;
 
-import com.danyhry.model.Person;
+import com.danyhry.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -10,44 +10,44 @@ import java.util.Optional;
 
 @Repository
 @Slf4j
-public class PersonDaoImpl implements PersonDao {
+public class UserDaoImpl implements UserDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public PersonDaoImpl(JdbcTemplate jdbcTemplate) {
+    public UserDaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
-    public List<Person> getAllPersons() {
+    public List<User> getAllUsers() {
         String sql = "SELECT * FROM person LIMIT 100";
-        return jdbcTemplate.query(sql, new PersonRowMapper());
+        return jdbcTemplate.query(sql, new UserRowMapper());
     }
 
     @Override
-    public Optional<Person> getPersonById(Long id) {
+    public Optional<User> getUserById(Long id) {
         String sql = "SELECT * FROM person WHERE id = ?";
-        return jdbcTemplate.query(sql, new PersonRowMapper(), id)
+        return jdbcTemplate.query(sql, new UserRowMapper(), id)
                 .stream()
                 .findFirst();
     }
 
     @Override
-    public int insertPerson(Person person) {
+    public int insertUser(User user) {
         String sql = "INSERT INTO person(name, surname, age) VALUES (?, ?, ?)";
-        return jdbcTemplate.update(sql, person.getName(), person.getSurname(), person.getAge());
+        return jdbcTemplate.update(sql, user.getName(), user.getSurname(), user.getAge());
     }
 
     @Override
-    public int deletePersonById(Long id) {
+    public int deleteUserById(Long id) {
         String sql = "DELETE FROM person WHERE id = ?";
         return jdbcTemplate.update(sql, id);
     }
 
     @Override
-    public int editPerson(Person person, Long id) {
+    public int editUser(User user, Long id) {
         String sql = "UPDATE person SET name = ?, surname = ?, age = ? WHERE id = ?";
-        log.info("person name: " + person.getName());
-        return jdbcTemplate.update(sql, person.getName(), person.getSurname(), person.getAge(), id);
+        log.info("User name: " + user.getName());
+        return jdbcTemplate.update(sql, user.getName(), user.getSurname(), user.getAge(), id);
     }
 }

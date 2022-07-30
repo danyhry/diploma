@@ -1,4 +1,4 @@
-CREATE TABLE person
+CREATE TABLE user
 (
     id      BIGINT       NOT NULL,
     name    VARCHAR(255) NOT NULL,
