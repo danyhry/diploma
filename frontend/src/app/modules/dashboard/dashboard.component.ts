@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogComponent} from "../dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {ApiService} from "../../services/api.service";
+import {UserService} from "../../services/user.service";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private api: ApiService) {
+    private api: UserService) {
   }
 
   ngOnInit(): void {
@@ -33,10 +33,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllPersons() {
-    this.api.getPerson()
-      .subscribe({
+    this.api.getPerson().subscribe({
           next: (res) => {
             console.log(res);
+            // @ts-ignore
             this.dataSource = new MatTableDataSource(res);
             // this.dataSource.paginator = this.paginator;
             // this.dataSource.sort = this.sort;

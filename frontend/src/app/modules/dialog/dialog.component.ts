@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ApiService} from "../../services/api.service";
+import {UserService} from "../../services/user.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -14,7 +14,7 @@ export class DialogComponent implements OnInit {
   actionBtn: string = "Save";
 
   constructor(private formBuilder: FormBuilder,
-              private api: ApiService,
+              private api: UserService,
               @Inject(MAT_DIALOG_DATA) public editData: any,
               private dialogRef: MatDialogRef<DialogComponent>) {
   }
